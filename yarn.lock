@@ -3072,6 +3072,10 @@ react-native-scrollable-tab-view@^0.7.1:
   dependencies:
     react-timer-mixin "^0.13.3"
 
+react-native-sketch@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/react-native-sketch/-/react-native-sketch-0.3.0.tgz#f5732f1cd38d165f5cbdc0bf2b6a3c0573547008"
+
 react-native-tabs@^1.0.9:
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/react-native-tabs/-/react-native-tabs-1.0.9.tgz#75d3c35e8b5b6970869eab282372cb32e2a782cd"

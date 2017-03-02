@@ -50,11 +50,11 @@ const scenes = Actions.create(
   <Scene key="root">
     {/*navBar={SegmentHeader}*/}
     {/* <Scene key="Classroom" component={Classroom} title="Classroom" direction="vertical" hideNavBar={true} initial={true} > */}
-    <Scene key="Presentation" component={Presentation} title="Presentation" initial={true}
+    <Scene key="Presentation" component={Presentation} title="Presentation"
       sceneStyle={{paddingTop: Navigator.NavigationBar.Styles.General.TotalNavHeight}} />
     <Scene key="Discussion" component={Discussion} title="Discussion"
       sceneStyle={{paddingTop: Navigator.NavigationBar.Styles.General.TotalNavHeight}} />
-    <Scene key="Whiteboard" component={Whiteboard} title="Whiteboard" />
+    <Scene key="Whiteboard" component={Whiteboard} title="Whiteboard" initial={true} />
   </Scene>
 )
 

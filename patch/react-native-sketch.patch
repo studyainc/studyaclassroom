@@ -1,0 +1,32 @@
+diff -ru react-native-sketch/RNSketch/RNSketch.m StudyaClassroom/node_modules/react-native-sketch/RNSketch/RNSketch.m
+--- react-native-sketch/RNSketch/RNSketch.m	2017-03-02 08:30:52.000000000 -0800
++++ StudyaClassroom/node_modules/react-native-sketch/RNSketch/RNSketch.m	2017-03-02 08:27:27.000000000 -0800
+@@ -8,9 +8,9 @@
+ 
+ #import "RNSketch.h"
+ #import "RNSketchManager.h"
+-#import "RCTEventDispatcher.h"
+-#import "RCTView.h"
+-#import "UIView+React.h"
++#import <React/RCTEventDispatcher.h>
++#import <React/RCTView.h>
++#import <UIView+React.h>
+ 
+ @implementation RNSketch
+ {
+diff -ru react-native-sketch/RNSketch/RNSketchManager.m StudyaClassroom/node_modules/react-native-sketch/RNSketch/RNSketchManager.m
+--- react-native-sketch/RNSketch/RNSketchManager.m	2017-03-02 08:30:52.000000000 -0800
++++ StudyaClassroom/node_modules/react-native-sketch/RNSketch/RNSketchManager.m	2017-03-02 08:27:21.000000000 -0800
+@@ -8,9 +8,9 @@
+ 
+ #import "RNSketchManager.h"
+ #import "RNSketch.h"
+-#import "RCTBridge.h"
+-#import "RCTConvert.h"
+-#import "RCTEventDispatcher.h"
++#import <React/RCTBridge.h>
++#import <React/RCTConvert.h>
++#import <React/RCTEventDispatcher.h>
+ 
+ #define ERROR_IMAGE_INVALID @"ERROR_IMAGE_INVALID"
+ #define ERROR_FILE_CREATION @"ERROR_FILE_CREATION"
