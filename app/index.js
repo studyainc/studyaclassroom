@@ -12,47 +12,86 @@ import {
 
 import React, { Component } from 'react'
 import {
+  Navigator,
   StyleSheet,
   Text,
   View
 } from 'react-native'
 
+import { Actions, Router, Scene } from 'react-native-router-flux'
+import Menu, {
+  MenuContext,
+  MenuOptions,
+  MenuOption,
+  MenuTrigger
+} from 'react-native-popup-menu'
+import Icon from 'react-native-vector-icons/MaterialIcons'
+
+import SegmentHeader from './components/SegmentHeader'
+import Discussion from './views/discussion/index'
+import Presentation from './views/presentation/index'
+import Whiteboard from './views/whiteboard/index'
+import Classroom from './views/classroom/index'
+
+const NavigatorMenu = () => (
+  <Menu>
+    <MenuTrigger style={styles.trigger}>
+      <Icon name="more-horiz" size={30} color="#900" />
+    </MenuTrigger>
+    <MenuOptions customStyles={optionsStyles}>
+      <MenuOption onSelect={() => Actions.Discussion()} text="Discussion" />
+      {/* <View style={styles.divider}/> */}
+      <MenuOption onSelect={() => Actions.Whiteboard()} text="Whiteboard" />
+    </MenuOptions>
+  </Menu>
+)
+
+const scenes = Actions.create(
+  <Scene key="root">
+    {/*navBar={SegmentHeader}*/}
+    {/* <Scene key="Classroom" component={Classroom} title="Classroom" direction="vertical" hideNavBar={true} initial={true} > */}
+    <Scene key="Presentation" component={Presentation} title="Presentation" initial={true}
+      sceneStyle={{paddingTop: Navigator.NavigationBar.Styles.General.TotalNavHeight}} />
+    <Scene key="Discussion" component={Discussion} title="Discussion"
+      sceneStyle={{paddingTop: Navigator.NavigationBar.Styles.General.TotalNavHeight}} />
+    <Scene key="Whiteboard" component={Whiteboard} title="Whiteboard" />
+  </Scene>
+)
+
 export default class StudyaClassroom extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
-    );
+      <MenuContext>
+        <Router scenes={scenes}/>
+      </MenuContext>
+    )
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  divider: {
+    marginVertical: 5,
+    marginHorizontal: 2,
+    borderBottomWidth: 1,
+    borderColor: '#ccc'
   },
 })
+
+const optionsStyles = {
+  optionsContainer: {
+    padding: 5,
+  },
+  optionsWrapper: {
+  },
+  optionWrapper: {
+    margin: 5,
+  },
+  optionTouchable: {
+    activeOpacity: 70,
+  },
+  optionText: {
+    color: 'black',
+  },
+}
 
 AppRegistry.registerComponent('StudyaClassroom', () => StudyaClassroom)
