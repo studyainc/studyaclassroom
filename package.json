@@ -12,6 +12,7 @@
 		"react-native": "0.42.0",
 		"react-native-audio-streaming": "^2.3.2",
 		"react-native-popup-menu": "^0.7.2",
+		"react-native-radio-buttons": "^0.14.0",
 		"react-native-router-flux": "^3.38.0",
 		"react-native-sketch": "^0.3.0",
 		"react-native-vector-icons": "^4.0.0"

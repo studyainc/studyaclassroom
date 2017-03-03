@@ -47,15 +47,16 @@ const NavigatorMenu = () => (
 )
 
 const scenes = Actions.create(
-  <Scene key="root" renderTitle={() => <SegmentHeader/>} >
-    {/* <Scene key="Classroom" component={Classroom} title="Classroom" direction="vertical" hideNavBar={true} initial={true} > */}
-    <Scene key="Presentation" component={Presentation} title="Presentation" initial={true}
-      renderRightButton={NavigatorMenu}
-      sceneStyle={{paddingTop: Navigator.NavigationBar.Styles.General.TotalNavHeight}} />
-    <Scene key="Discussion" component={Discussion} title="Discussion"
-      renderRightButton={NavigatorMenu}
-      sceneStyle={{paddingTop: Navigator.NavigationBar.Styles.General.TotalNavHeight}} />
-    <Scene key="Whiteboard" component={Whiteboard} title="Whiteboard" />
+  <Scene key="root">
+    <Scene key="Classroom">
+      <Scene key="Presentation" component={Presentation} title="Presentation" initial={true}
+        renderRightButton={NavigatorMenu} renderTitle={() => <SegmentHeader param='Presentation'/>}
+        sceneStyle={{paddingTop: Navigator.NavigationBar.Styles.General.TotalNavHeight}} />
+      <Scene key="Discussion" component={Discussion} title="Discussion"
+        renderRightButton={NavigatorMenu} renderTitle={() => <SegmentHeader param='Discussion'/>}
+        sceneStyle={{paddingTop: Navigator.NavigationBar.Styles.General.TotalNavHeight}} />
+      <Scene key="Whiteboard" component={Whiteboard} title="Whiteboard" />
+    </Scene>
   </Scene>
 )
 
