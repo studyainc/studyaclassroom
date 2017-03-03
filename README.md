@@ -35,11 +35,11 @@ Similiar as Whiteboard, photo/camera pickup just have pictures from camera/photo
 
 
 ## Software stack
-[react-native](https://facebook.github.io/react-native)
-[react-native-sketch](https://github.com/jgrancher/react-native-sketch)
-[react-native-signature-capture](https://github.com/RepairShopr/react-native-signature-capture)
-[react-native-gifted-chat](https://github.com/FaridSafi/react-native-gifted-chat)
-[react-native-audio-streaming](https://github.com/tlenclos/react-native-audio-streaming)
+[react-native](https://facebook.github.io/react-native)    
+[react-native-sketch](https://github.com/jgrancher/react-native-sketch)    
+[react-native-signature-capture](https://github.com/RepairShopr/react-native-signature-capture)    
+[react-native-gifted-chat](https://github.com/FaridSafi/react-native-gifted-chat)    
+[react-native-audio-streaming](https://github.com/tlenclos/react-native-audio-streaming)    
 ...(TBC)
 
 
