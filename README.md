@@ -20,6 +20,10 @@ Whiteboard is a drawing tool to create sketch draft for exchanging thoughts, bes
 ### Photo/Camera pickup
 Similiar as Whiteboard, photo/camera pickup just have pictures from camera/photo library then send out via discussion view.
 
+## Design
+![Studya Classroom Top][studya_classroom_top]
+
+[studya_classroom_top]: doc/d/studya_classroom_top.png
 
 ## Technologies
 ##### Audio/video streaming
@@ -28,6 +32,7 @@ Similiar as Whiteboard, photo/camera pickup just have pictures from camera/photo
 ##### QRcode
 ##### Multimedia Editor (with Audio/video/picture, of course text)
 ##### HTML 5 / Audio/video player
+
 
 
 
