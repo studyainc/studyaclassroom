@@ -44,7 +44,7 @@ export default class Presentation extends Component {
     this.state = {
       dataSource: this.ds.cloneWithRows(this.urls),
       selectedSource: this.urls[0].url
-    };
+    }
   }
   render() {
     return (

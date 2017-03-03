@@ -40,21 +40,22 @@ const NavigatorMenu = () => (
     </MenuTrigger>
     <MenuOptions customStyles={optionsStyles}>
       <MenuOption onSelect={() => Actions.Discussion()} text="Discussion" />
-      {/* <View style={styles.divider}/> */}
+      <View style={styles.divider}/>
       <MenuOption onSelect={() => Actions.Whiteboard()} text="Whiteboard" />
     </MenuOptions>
   </Menu>
 )
 
 const scenes = Actions.create(
-  <Scene key="root">
-    {/*navBar={SegmentHeader}*/}
+  <Scene key="root" renderTitle={() => <SegmentHeader/>} >
     {/* <Scene key="Classroom" component={Classroom} title="Classroom" direction="vertical" hideNavBar={true} initial={true} > */}
-    <Scene key="Presentation" component={Presentation} title="Presentation"
+    <Scene key="Presentation" component={Presentation} title="Presentation" initial={true}
+      renderRightButton={NavigatorMenu}
       sceneStyle={{paddingTop: Navigator.NavigationBar.Styles.General.TotalNavHeight}} />
     <Scene key="Discussion" component={Discussion} title="Discussion"
+      renderRightButton={NavigatorMenu}
       sceneStyle={{paddingTop: Navigator.NavigationBar.Styles.General.TotalNavHeight}} />
-    <Scene key="Whiteboard" component={Whiteboard} title="Whiteboard" initial={true} />
+    <Scene key="Whiteboard" component={Whiteboard} title="Whiteboard" />
   </Scene>
 )
 

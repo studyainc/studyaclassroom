@@ -36,13 +36,13 @@ export default class Whiteboard extends Component {
 
   state = {
     encodedSignature: null,
-  };
+  }
 
   /**
    * Clear / reset the drawing
    */
   clear() {
-    this.sketch.clear();
+    this.sketch.clear()
   }
 
   /**
