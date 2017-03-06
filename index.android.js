@@ -1,4 +1,4 @@
-//**
+/**
  * Studya Classroom
  * https://www.studya.us
  * @flow
