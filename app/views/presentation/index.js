@@ -14,64 +14,46 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  View
+  View,
+  WebView
 } from 'react-native'
-import { Player, ReactNativeAudioStreaming } from 'react-native-audio-streaming'
+import { Spinner } from 'native-base'
 
 export default class Presentation extends Component {
-  constructor() {
-    super();
-    this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-    this.urls = [
-    {
-      name: 'Shoutcast stream',
-      url: 'http://lacavewebradio.chickenkiller.com:8000/stream.mp3'
-    },
-    {
-      name: 'M4A stream',
-      url: 'http://web.ist.utl.pt/antonio.afonso/www.aadsm.net/libraries/id3/music/02_Viandanze.m4a'
-    },
-    {
-      name: 'MP3 stream with ID3 meta data',
-      url: 'http://web.ist.utl.pt/antonio.afonso/www.aadsm.net/libraries/id3/music/Bruno_Walter_-_01_-_Beethoven_Symphony_No_1_Menuetto.mp3'
-    },
-    {
-      name: 'MP3 stream',
-      url: 'http://www.stephaniequinn.com/Music/Canon.mp3'
-    }
-    ];
-
+  constructor(props) {
+    super(props)
     this.state = {
-      dataSource: this.ds.cloneWithRows(this.urls),
-      selectedSource: this.urls[0].url
+      presentation: null
     }
   }
+  componentDidMount() {
+    let dataURL = 'http://ec2-35-161-28-132.us-west-2.compute.amazonaws.com/wp-json/wp/v2/presentations'
+    fetch(dataURL)
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          presentation: res[0]
+        })
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
   render() {
-    return (
-      <View style={styles.container}>
-        <ListView
-          dataSource={this.state.dataSource}
-          renderRow={(rowData) =>
-            <TouchableOpacity onPress={() => {
-              this.setState({selectedSource: rowData.url, dataSource: this.ds.cloneWithRows(this.urls)});
-              ReactNativeAudioStreaming.play(rowData.url, {});
-              }}>
-            <View style={StyleSheet.flatten([
-              styles.row,
-              {backgroundColor: rowData.url == this.state.selectedSource ? '#3fb5ff' : 'white'}
-              ])}>
-              <Text style={styles.icon}>▸</Text>
-              <View style={styles.column}>
-                <Text style={styles.name}>{rowData.name}</Text>
-                <Text style={styles.url}>{rowData.url}</Text>
-              </View>
-            </View>
-          </TouchableOpacity>
-          }
-          />
+    const { presentation } = this.state
 
-        <Player url={this.state.selectedSource} />
-      </View>
+    if (!presentation) {
+      return (
+        <View style={styles.container}>
+          <Spinner color='green' />
+        </View>
+      )
+    }
+    const content = '<h1>' + presentation.title.rendered + '</h1>' + presentation.content.rendered
+    return (
+      <WebView
+        source={{html: content}}
+      />
     )
   }
 }
@@ -79,30 +61,9 @@ export default class Presentation extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-    paddingTop: Platform.OS === 'ios' ? 30 : 0
-  },
-  row: {
-    flex: 1,
     flexDirection: 'row',
-    padding: 5,
-    borderBottomColor: 'grey',
-    borderBottomWidth: 1
-  },
-  column: {
-    flexDirection: 'column'
-  },
-  icon: {
-    fontSize: 26,
-    width: 30,
-    textAlign: 'center'
-  },
-  name: {
-    color: '#000'
-  },
-  url: {
-    color: '#CCC'
+    justifyContent: 'center',
+    padding: 0,
+    backgroundColor: '#F5FCFF'
   }
 })
