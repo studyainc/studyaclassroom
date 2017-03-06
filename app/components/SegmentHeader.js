@@ -31,9 +31,9 @@ export default class SegmentHeader extends Component {
     this.setState({ selectedSegment })
 
     if (selectedIndex === 0) {
-      Actions.Presentation({type:ActionConst.REPLACE})
+      Actions.Discussion({type:ActionConst.BACK})
     } else if (selectedIndex === 1) {
-      Actions.Discussion({type:ActionConst.REPLACE})
+      Actions.Discussion({type:ActionConst.PUSH})
     }
   }
 

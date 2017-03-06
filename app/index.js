@@ -54,6 +54,7 @@ const scenes = Actions.create(
         sceneStyle={{paddingTop: Navigator.NavigationBar.Styles.General.TotalNavHeight}} />
       <Scene key="Discussion" component={Discussion} title="Discussion"
         renderRightButton={NavigatorMenu} renderTitle={() => <SegmentHeader param='Discussion'/>}
+        hideBackImage={true}
         sceneStyle={{paddingTop: Navigator.NavigationBar.Styles.General.TotalNavHeight}} />
       <Scene key="Whiteboard" component={Whiteboard} title="Whiteboard" />
     </Scene>
